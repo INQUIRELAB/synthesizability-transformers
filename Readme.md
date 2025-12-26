@@ -1,13 +1,16 @@
-# AI-assisted Materials Synthesizability Prediction from Crystal Structure (Structure-Aware Transformers)
+# AI-assisted materials synthesizability prediction from crystallographic structure using structure-aware transformers
+
+🧩 **Overview**  
+This repository contains the official codebase for **structure-based materials synthesizability prediction** using transformer architectures operating on the **Fourier-Transformed Crystal Properties (FTCP)** representation. The goal is to learn synthesizability patterns directly from crystallographic structure (rather than relying only on thermodynamic stability heuristics), enabling improved screening of hypothetical inorganic crystals and more reliable prioritization for experimental validation.
 
 🧑‍🔬 **Authors**
 - **Danial Ebrahimzadeh** (University of Oklahoma)
 - **Sarah Sharif** (University of Oklahoma)
 - **Nisha Geng** (University of Oklahoma)
-- **Yaser Mike Banad** (University of Oklahoma) — *Corresponding Author*
+- **Yaser Mike Banad** (University of Oklahoma) — *Corresponding Author* (bana@ou.edu)
 
-📄 **Abstract (Paraphrased)**
-Computational workflows can generate millions of hypothetical inorganic crystal structures, but only a small subset are experimentally realizable. This project implements transformer-based models trained directly on crystallographic structure representations to predict **materials synthesizability** beyond thermodynamic stability heuristics. We evaluate three transformer paradigms over the **Fourier-Transformed Crystal Properties (FTCP)** representation: (i) a domain-agnostic Feature Tokenizer Transformer (FT-T), (ii) a hierarchical windowed-attention Swin Transformer (SwinT), and (iii) a domain-informed Structure-Aware Transformer (SAT) that explicitly encodes crystallographic components. A weighted ensemble of SAT + SwinT provides the strongest performance and improves precision while significantly reducing false positives compared to common DFT stability screening rules.
+📄 **Abstract**
+Computational methods can now predict millions of hypothetical crystalline materials with desirable properties, yet only a tiny fraction can be experimentally synthesized. Traditional screening relies on thermodynamic stability calculations, which achieve modest accuracy ( 60%) in distinguishing synthesizable from non-synthesizable phases. Here, we demonstrate that transformer neural networks trained on crystallographic structure data substantially outperform energy-based approaches for synthesizability prediction. We compare three transformer architectures processing Fourier-transformed crystal properties (FTCP) representation: a domain-agnostic design, a hierarchical spatial model, and a structure-aware architecture that explicitly decomposes crystallographic components. An ensemble combining the two best-performing models achieves 90.88% accuracy and 96.47% ROC-AUC, providing twofold higher precision and fivefold fewer false positives than DFT stability criteria. Case study of twelve lithium niobate polymorphs shows that our weight-optimized ensemble prediction successfully discriminates among structurally distinct variants with near-identical thermodynamics, demonstrating the benefit of combining complementary architectural features. These results establish that learning from experimental synthesis outcomes captures the complex interplay of thermodynamics, kinetics, and synthesis pathways governing materials realizability.
 
 🧾 **License**
 This repository is released under the **MIT License**.
@@ -17,19 +20,18 @@ This repository is released under the **MIT License**.
 📦 **Dataset (Required)**
 > **Important:** The primary dataset file is **>2 GB** and is **not included** in the GitHub repository.
 
-✅ **Download the FTCP dataset and place it in `data/`: `ftcp_data.h5` (Hugging Face)**  
-- Target path (inside this repository): `data/ftcp_data.h5`  
-- Source:
-  - `https://huggingface.co/datasets/danial199472/synthesizability-transformers/resolve/main/ftcp_data.h5`
+✅ **Download the FTCP dataset and place it here:** `data/ftcp_data.h5`  
+- **Hugging Face (click to download):** [ftcp_data.h5](https://huggingface.co/datasets/danial199472/synthesizability-transformers/resolve/main/ftcp_data.h5)
 
-Example (Linux/macOS):
-```bash
-mkdir -p data
-wget -O data/ftcp_data.h5 "https://huggingface.co/datasets/danial199472/synthesizability-transformers/resolve/main/ftcp_data.h5"
+If you already have the file locally (example Windows location):
+- `C:\Users\dania\Research\SyntheFormer\Nature_MC\files\data\ftcp_data.h5`  
+Copy it into this repository as:
+- `./data/ftcp_data.h5`
 
+---
 
-🗂️ Repository Structure
-
+🗂️ **Repository structure**
+```text
 .
 ├─ data/
 │  ├─ ftcp_data.h5                      # (download separately; >2GB)
@@ -67,9 +69,11 @@ wget -O data/ftcp_data.h5 "https://huggingface.co/datasets/danial199472/synthesi
 ├─ requirements.txt
 └─ REPO-TREE.txt
 
+````
 
+---
 ⚙️ Installation
-
+Create a virtual environment and install dependencies:
 python -m venv .venv
 # Windows:
 #   .venv\Scripts\activate
@@ -79,7 +83,7 @@ python -m venv .venv
 pip install -r requirements.txt
 
 
-🧠 Models Included
+🧠 Models included
 
 FT-T (Feature Tokenizer Transformer): ft-t/
 
@@ -90,13 +94,13 @@ SAT (Structure-Aware Transformer with component-wise encoding): SAT/
 Weighted Ensemble (SAT + SwinT): Ensemble/
 
 
-🚀 Quickstart (Typical Workflow)
+🚀 Quickstart
 
-Download dataset → place at data/ftcp_data.h5
+Download the dataset and place it at: data/ftcp_data.h5
 
 Install requirements
 
-Train or evaluate a model:
+Train or run a model:
 
 FT-T: ft-t/train_ft.py
 
@@ -106,16 +110,15 @@ SAT: SAT/train_model.py
 
 Ensemble: Ensemble/ensemble_model.py
 
-Because training scripts may assume specific paths/configs, review the top of each script and adjust dataset paths if needed.
+Note: Some scripts may assume specific local paths or configurations. If needed, adjust dataset paths at the top of each script/config.
 
-
-🔁 Ensemble Weights
+🔁 Ensemble weights
 The ensemble combines SAT and SwinT probabilities via a weighted average. Weight-search utilities are provided in:
 
 Ensemble/optimize_weights.py
 
-
 📬 Contact
 
-Corresponding author: Yaser Mike Banad (bana@ou.edu)
-First author: Danial Ebrahimzadeh (danial.ebrahimzadeh@ou.edu)
+Corresponding author: Yaser Mike Banad — bana@ou.edu
+
+First author: Danial Ebrahimzadeh — danial.ebrahimzadeh@ou.edu
