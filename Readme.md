@@ -4,7 +4,7 @@
 This repository contains the official codebase for **structure-based materials synthesizability prediction** using transformer architectures operating on the **Fourier-Transformed Crystal Properties (FTCP)** representation. The goal is to learn synthesizability patterns directly from crystallographic structure (rather than relying only on thermodynamic stability heuristics), enabling improved screening of hypothetical inorganic crystals and more reliable prioritization for experimental validation.
 
 🧑‍🔬 **Authors**
-- **Danial Ebrahimzadeh** (University of Oklahoma)
+- **Danial Ebrahimzadeh** (University of Oklahoma) — (danial.ebrahimzadeh@ou.edu)
 - **Sarah Sharif** (University of Oklahoma)
 - **Nisha Geng** (University of Oklahoma)
 - **Yaser Mike Banad** (University of Oklahoma) — *Corresponding Author* (bana@ou.edu)
@@ -34,7 +34,7 @@ Copy it into this repository as:
 ```text
 .
 ├─ data/
-│  ├─ ftcp_data.h5                      # (download separately; >2GB)
+│  ├─ ftcp_data.h5                      # (download separately)
 │  └─ mp_structures_with_synthesizability1.xlsx
 ├─ ft-t/
 │  ├─ dataset_balanced_fixed.py
@@ -66,8 +66,7 @@ Copy it into this repository as:
 ├─ Ensemble/
 │  ├─ ensemble_model.py
 │  └─ optimize_weights.py
-├─ requirements.txt
-└─ REPO-TREE.txt
+└─ requirements.txt
 ```
 
 ---
