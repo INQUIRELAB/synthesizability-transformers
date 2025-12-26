@@ -1,0 +1,37 @@
+model:
+  name: "ftcp_transformer"
+  # Mode can be 'structure' or 'sequence'
+  # 'structure' - Uses structure-aware encoding that treats different components separately
+  # 'sequence' - Treats the entire FTCP tensor as a sequence without reshaping
+  mode: "structure"
+  hidden_dim: 128
+  nhead: 8
+  num_layers: 6
+  dropout: 0.1
+
+training:
+  batch_size: 64
+  num_epochs: 200
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  gradient_clip_norm: 1.0
+  mixed_precision: true
+  use_class_weights: true
+  focal_loss_alpha: 2.0
+  focal_loss_gamma: 2.0
+
+data:
+  # Absolute paths to the data files
+  ftcp_file: "/home/yorha/Documents/Projects/danial/Synthesizability/synthesizability/class/ftcp_data.h5"
+  labels_file: "/home/yorha/Documents/Projects/danial/Synthesizability/synthesizability/class/mp_structures_with_synthesizability1.xlsx"
+  num_workers: 4
+  pin_memory: true
+
+logging:
+  output_dir: "results"
+  viz_interval: 5  # Create visualizations every N epochs
+  wandb:
+    project: "materials_synthesizability"
+    entity: "danial199472"
+    name: "structure_aware_transformer"
+    mode: "offline"  # Use offline mode to prevent connectivity issues 
