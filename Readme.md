@@ -72,53 +72,52 @@ Copy it into this repository as:
 ````
 
 ---
-⚙️ Installation
+
+## ⚙️ Installation
+
 Create a virtual environment and install dependencies:
+
+```bash
 python -m venv .venv
+
 # Windows:
-#   .venv\Scripts\activate
+.venv\Scripts\activate
+
 # macOS/Linux:
-#   source .venv/bin/activate
+source .venv/bin/activate
 
 pip install -r requirements.txt
 
+🧠 Models Included
+FT-T (Feature Tokenizer Transformer): Located in ft-t/
 
-🧠 Models included
+SwinT (Shifted-window hierarchical attention): Located in SwinT/
 
-FT-T (Feature Tokenizer Transformer): ft-t/
+SAT (Structure-Aware Transformer with component-wise encoding): Located in SAT/
 
-SwinT (Shifted-window hierarchical attention): SwinT/
-
-SAT (Structure-Aware Transformer with component-wise encoding): SAT/
-
-Weighted Ensemble (SAT + SwinT): Ensemble/
-
+Weighted Ensemble (SAT + SwinT): Located in Ensemble/
 
 🚀 Quickstart
-
 Download the dataset and place it at: data/ftcp_data.h5
 
-Install requirements
+Install requirements as shown in the Installation section.
 
-Train or run a model:
+Train or run a model by executing the respective scripts:
 
-FT-T: ft-t/train_ft.py
+FT-T: python ft-t/train_ft.py
 
-SwinT: SwinT/train_swin.py
+SwinT: python SwinT/train_swin.py
 
-SAT: SAT/train_model.py
+SAT: python SAT/train_model.py
 
-Ensemble: Ensemble/ensemble_model.py
+Ensemble: python Ensemble/ensemble_model.py
 
-Note: Some scripts may assume specific local paths or configurations. If needed, adjust dataset paths at the top of each script/config.
+Note: Some scripts may assume specific local paths or configurations. If needed, adjust dataset paths at the top of each script or configuration file.
 
-🔁 Ensemble weights
-The ensemble combines SAT and SwinT probabilities via a weighted average. Weight-search utilities are provided in:
-
-Ensemble/optimize_weights.py
+🔁 Ensemble Weights
+The ensemble combines SAT and SwinT probabilities via a weighted average. Weight-search utilities are provided in: Ensemble/optimize_weights.py
 
 📬 Contact
-
 Corresponding author: Yaser Mike Banad — bana@ou.edu
 
 First author: Danial Ebrahimzadeh — danial.ebrahimzadeh@ou.edu
