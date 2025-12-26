@@ -68,8 +68,7 @@ Copy it into this repository as:
 │  └─ optimize_weights.py
 ├─ requirements.txt
 └─ REPO-TREE.txt
-
-````
+```
 
 ---
 
@@ -87,37 +86,40 @@ python -m venv .venv
 source .venv/bin/activate
 
 pip install -r requirements.txt
+```
 
-🧠 Models Included
-FT-T (Feature Tokenizer Transformer): Located in ft-t/
+---
 
-SwinT (Shifted-window hierarchical attention): Located in SwinT/
+## 🧠 Models Included
 
-SAT (Structure-Aware Transformer with component-wise encoding): Located in SAT/
+- **FT-T** (Feature Tokenizer Transformer): Located in `ft-t/`
+- **SwinT** (Shifted-window hierarchical attention): Located in `SwinT/`
+- **SAT** (Structure-Aware Transformer with component-wise encoding): Located in `SAT/`
+- **Weighted Ensemble** (SAT + SwinT): Located in `Ensemble/`
 
-Weighted Ensemble (SAT + SwinT): Located in Ensemble/
+---
 
-🚀 Quickstart
-Download the dataset and place it at: data/ftcp_data.h5
+## 🚀 Quickstart
 
-Install requirements as shown in the Installation section.
+1. Download the dataset and place it at: `data/ftcp_data.h5`
+2. Install requirements as shown in the Installation section.
+3. Train or run a model by executing the respective scripts:
+   - **FT-T:** `python ft-t/train_ft.py`
+   - **SwinT:** `python SwinT/train_swin.py`
+   - **SAT:** `python SAT/train_model.py`
+   - **Ensemble:** `python Ensemble/ensemble_model.py`
 
-Train or run a model by executing the respective scripts:
+> **Note:** Some scripts may assume specific local paths or configurations. If needed, adjust dataset paths at the top of each script or configuration file.
 
-FT-T: python ft-t/train_ft.py
+---
 
-SwinT: python SwinT/train_swin.py
+## 🔁 Ensemble Weights
 
-SAT: python SAT/train_model.py
+The ensemble combines SAT and SwinT probabilities via a weighted average. Weight-search utilities are provided in: `Ensemble/optimize_weights.py`
 
-Ensemble: python Ensemble/ensemble_model.py
+---
 
-Note: Some scripts may assume specific local paths or configurations. If needed, adjust dataset paths at the top of each script or configuration file.
+## 📬 Contact
 
-🔁 Ensemble Weights
-The ensemble combines SAT and SwinT probabilities via a weighted average. Weight-search utilities are provided in: Ensemble/optimize_weights.py
-
-📬 Contact
-Corresponding author: Yaser Mike Banad — bana@ou.edu
-
-First author: Danial Ebrahimzadeh — danial.ebrahimzadeh@ou.edu
+- **Corresponding author:** Yaser Mike Banad — bana@ou.edu
+- **First author:** Danial Ebrahimzadeh — danial.ebrahimzadeh@ou.edu
