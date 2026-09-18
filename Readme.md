@@ -13,7 +13,7 @@ This repository contains the official codebase for **structure-based materials s
 Computational methods can now predict millions of hypothetical crystalline materials with desirable properties, yet only a tiny fraction can be experimentally synthesized. Traditional screening relies on thermodynamic stability calculations, which achieve modest accuracy ( 60%) in distinguishing synthesizable from non-synthesizable phases. Here, we demonstrate that transformer neural networks trained on crystallographic structure data substantially outperform energy-based approaches for synthesizability prediction. We compare three transformer architectures processing Fourier-transformed crystal properties (FTCP) representation: a domain-agnostic design, a hierarchical spatial model, and a structure-aware architecture that explicitly decomposes crystallographic components. An ensemble combining the two best-performing models achieves 90.88% accuracy and 96.47% ROC-AUC, providing twofold higher precision and fivefold fewer false positives than DFT stability criteria. Case study of twelve lithium niobate polymorphs shows that our weight-optimized ensemble prediction successfully discriminates among structurally distinct variants with near-identical thermodynamics, demonstrating the benefit of combining complementary architectural features. These results establish that learning from experimental synthesis outcomes captures the complex interplay of thermodynamics, kinetics, and synthesis pathways governing materials realizability.
 
 🧾 **License**
-This repository is released under the **MIT License**.
+This repository is released under the **PolyForm Noncommercial License 1.0.0**.
 
 ---
 
@@ -122,3 +122,7 @@ The ensemble combines SAT and SwinT probabilities via a weighted average. Weight
 
 - **Corresponding author:** Yaser Mike Banad — bana@ou.edu
 - **First author:** Danial Ebrahimzadeh — danial.ebrahimzadeh@ou.edu
+
+## License scope
+
+Original INQUIRE Lab code is licensed under PolyForm Noncommercial License 1.0.0. Original INQUIRE Lab datasets, figures, and documentation are licensed under CC BY-NC 4.0. See [LICENSE](LICENSE) for scope and the full license texts. Materials from other rights holders retain their original terms.
